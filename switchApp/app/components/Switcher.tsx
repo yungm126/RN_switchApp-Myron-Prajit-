@@ -1,14 +1,12 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import * as React from 'react';
+import { Switch } from 'react-native-paper';
 
-const Switcher = () => {
-  return (
-    <View>
-      <Text>Switcher</Text>
-    </View>
-  )
-}
+const MyComponent = () => {
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
-export default Switcher
+  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
-const styles = StyleSheet.create({})
+  return <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />;
+};
+
+export default MyComponent;
