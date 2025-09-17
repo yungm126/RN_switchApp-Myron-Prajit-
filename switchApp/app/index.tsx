@@ -4,7 +4,7 @@ import Switcher from './components/Switcher';
 
 const backgrounds = [
   require('../assets/images/andrew.png'),
-  require('../assets/images/sunshine.jpeg'),
+  require('../assets/images/sunshine.jpg'),
 ];
 
 export default function App() {
@@ -12,19 +12,24 @@ export default function App() {
 
   return (
     <ImageBackground
-      source={isSwitchOn ? backgrounds[1] : backgrounds[0]}
+      source={isSwitchOn ? backgrounds[0] : backgrounds[1]}
       style={styles.background}
       resizeMode="cover"
     >
       <View style={styles.container}>
         <Switcher value={isSwitchOn} onToggle={() => setIsSwitchOn(!isSwitchOn)} />
-        {/* ...other app content... */}
       </View>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  background: { flex: 1 },
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  background: {
+     flex: 1,
+      width: '100%',
+      height: '100%'
+    },
+  container: {
+     flex: 1, justifyContent: 'center', alignItems: 'center' 
+    },
 });
