@@ -1,15 +1,30 @@
-import { Text, View } from "react-native";
+import React, { useState } from 'react';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import Switcher from './components/Switcher';
 
-export default function Index() {
+const backgrounds = [
+  require('../assets/images/andrew.png'),
+  require('../assets/images/sunshine.jpeg'),
+];
+
+export default function App() {
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <ImageBackground
+      source={isSwitchOn ? backgrounds[1] : backgrounds[0]}
+      style={styles.background}
+      resizeMode="cover"
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <View style={styles.container}>
+        <Switcher value={isSwitchOn} onToggle={() => setIsSwitchOn(!isSwitchOn)} />
+        {/* ...other app content... */}
+      </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  background: { flex: 1 },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+});
